@@ -5,9 +5,9 @@ import draw
 
 # Initialize weights and biases
 images, labels = get_mnist()
-w_i_h = np.random.uniform(-0.5, 0.5, (1200, 784))
-w_h_o = np.random.uniform(-0.5, 0.5, (10, 1200))
-b_i_h = np.zeros((1200, 1))
+w_i_h = np.random.uniform(-0.5, 0.5, (20, 784))
+w_h_o = np.random.uniform(-0.5, 0.5, (10, 20))
+b_i_h = np.zeros((20, 1))
 b_h_o = np.zeros((10, 1))
 leave = 0
 learn_rate = 0.04
@@ -54,7 +54,7 @@ while True:
 
     print(f"Acc: {round((nr_correct[10] / images.shape[0]) * 100, 2)}%")
     for i in range(len(nr_correct) - 1):
-        if round((nr_correct[i] / images.shape[0]) * 100, 2) > 8.5:
+        if round((nr_correct[i] / images.shape[0]) * 100, 2) > 8.7:
             leave += 1
             print(str(i) + ": passes with a " + str(round((nr_correct[i] / images.shape[0]) * 100, 2)) + "% accuracy")
             nr_correct[i] = 0
@@ -82,13 +82,4 @@ while True:
 
     # Backpropagation output into hidden (cost function derivative)
     l = np.zeros((10, 1))
-    l[int(input("What number is it?"))][0] = 1
-    delta_o = o - l
-    w_h_o += -learn_rate * delta_o @ np.transpose(h)
-    b_h_o += -learn_rate * delta_o
-    # Backpropagation hidden into input (activation function derivative)
-    delta_h = np.transpose(w_h_o) @ delta_o * (h * (1 - h))
-    w_i_h += -learn_rate * delta_h @ np.transpose(img)
-    b_i_h += -learn_rate * delta_h
     print("Is it: " + str(o.argmax()))
-    plt.show()

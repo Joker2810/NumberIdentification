@@ -54,7 +54,7 @@ while True:
 
     print(f"Acc: {round((nr_correct[10] / images.shape[0]) * 100, 2)}%")
     for i in range(len(nr_correct) - 1):
-        if round((nr_correct[i] / images.shape[0]) * 100, 2) > 8:
+        if round((nr_correct[i] / images.shape[0]) * 100, 2) > 9.1:
             leave += 1
             print(str(i) + ": passes with a " + str(round((nr_correct[i] / images.shape[0]) * 100, 2)) + "% accuracy")
             nr_correct[i] = 0

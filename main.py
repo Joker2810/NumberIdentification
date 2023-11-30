@@ -27,13 +27,15 @@ nr_correct_9 = 0
 nr_correct_all = 0
 nr_correct = [nr_correct_0, nr_correct_1, nr_correct_2, nr_correct_3, nr_correct_4, nr_correct_5, nr_correct_6,
               nr_correct_7, nr_correct_8, nr_correct_9, nr_correct_all]
-training = input("Do you want to train the network? (y/n)\n")
+save_weights = True
 run = True
 while True:
+    training = input("Do you want to train the network? (y/n)\n")
     if training in ["y", "Y", "yes", "Yes", "YES"]:
         break
     elif training in ["n", "N", "no", "No", "NO"]:
         run = False
+        save_weights = False
         break
     else:
         print("Please enter a valid input such as (y/n)")
@@ -80,7 +82,7 @@ while run:
         leave = 0
         nr_correct[10] = 0
 
-while True:
+while save_weights:
     move_on = input("Do you want to save the weights? (y/n)\n")
     # Check if the DataFrame is empty
     if move_on in ["y", "Y", "yes", "Yes", "YES"]:

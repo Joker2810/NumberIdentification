@@ -60,7 +60,7 @@ def main():
             elif event.type == pygame.MOUSEMOTION:
                 # If we are drawing, draw a line from the previous mouse position to the current mouse position
                 if drawing:
-                    pygame.draw.line(screen, (255, 255, 255), last_pos, event.pos, 20)  # Adjusted line thickness
+                    pygame.draw.line(screen, (255, 255, 255), last_pos, event.pos, 40)  # Adjusted line thickness
                     last_pos = event.pos
 
         pygame.display.update()
